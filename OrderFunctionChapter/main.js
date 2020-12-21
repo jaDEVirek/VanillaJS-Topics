@@ -1,5 +1,5 @@
 /**
- * Data prepare: 
+ * Prepared data:
  */
 const companies = [
       {name: "Company One", category: "Finance", start: 1981, end: 2003},
@@ -12,12 +12,39 @@ const companies = [
       {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
       {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
     ];
-  const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32]; 
+  const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
    
   var result =  companies.filter(cp => cp.start  > 1995 );
   var  result2 =  companies.filter(cp => cp.category == "Retail" );
    console.log(result);
    console.log(result2);
 
-   var obj =  {[pars: "Tom"]};
-   console.log(obj.pars);
+//    const companyNames = companies.map((value,index) =>{
+//       return value.name + " possition: "+  ++index;
+//    })
+
+   const companyNames = companies.map((value,index) =>{
+     return `${value.name}, ${value.category} [ ${value.start} - ${value.end}]`;
+   });
+   console.log(companyNames);
+
+   const doubleMappedAges= ages.map(t=> Math.sqrt(t)).map(age=>age*2);;
+ console.log(doubleMappedAges);                                  
+
+  var sortedCompany = companyNames.sort((c1,c2)=> (c1.start < c2.start ? 1 : -1 ));
+  console.log(sortedCompany);
+  console.log(sortedCompany.length);
+sortedCompany.forEach(c1 => console.log(c1));
+
+//full arrow function example 
+var ageSum = 0;
+ageSum = ages.reduce((total,value) => ( total+=value) ,0);
+console.log(ageSum);
+
+// other examples without full arrow function 
+const totalYears = companies.reduce((total,cp) =>{
+  return total+= (cp.end-cp.start);
+},0)
+console.log(totalYears);
+
+// full example 
