@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
       var el = document.getElementsByClassName('btn-info')[0];
+      var e2 = document.getElementsByClassName('btn-warning')[0];
       el.addEventListener('click', loadText);
+      e2.addEventListener('click', loadExternalApi);
 }
 )
 
@@ -10,16 +12,45 @@ function loadText() {
       xhr.onload = function () {
             if (xhr.status == 200) {
                   var users = this.responseText;
-                  var parsed = JSON.parse(this.responseText);
-                  var parsed2 = JSON.parse(users);
+                  var dataUsers = JSON.parse(this.responseText);
                   //   console.log(users[0].name);
                   // Object.entries(users).forEach(function ([key, value]) {
                   //       console.log('key: ' + key + ' values: ' + value);
                   // });
-                  console.log(users.substring(1, 41))
-                  console.log(parsed2[1].name)
+                  let outPut = '';
+                  for (let index in dataUsers) {
+                        outPut += "<ul>" +
+                              '<li> Age:  ' + dataUsers[index].age + '</li>' +
+                              '<li> Name:  ' + dataUsers[index].name + '</li>' +
+                              '<li> email:  ' + dataUsers[index].email + '</li>' +
+                              '</ul>';
+                  }
+                  document.querySelector("div.col-1").innerHTML = outPut;
             }
       }
       xhr.send();
+}
+
+function loadExternalApi() {
+      xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://api.github.com/users', true);
+      xhr.onload = function () {
+            if (xhr.status == 200) {
+                  var resp = JSON.parse(this.responseText);
+                  let outPut = '';
+                  for (let index in resp) {
+                        outPut += "<ul>" +
+                              '<img src="' + resp[index].avatar_url + '" width="70" height="70">' +
+                              +'<ul>' +
+                              '<li> ID:  ' + resp[index].id + '</li>' +
+                              '<li> Login:  ' + resp[index].login + '</li>' +
+                              '</ul>' + '</div >';
+                  }
+                  console.log("action");
+                  document.querySelector("div.inner-cl2").innerHTML = outPut;
+            }
+      }
+      xhr.send();
+
 }
 
