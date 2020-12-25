@@ -11,9 +11,15 @@ function loadText() {
             if (xhr.status == 200) {
                   var users = this.responseText;
                   var parsed = JSON.parse(this.responseText);
-                  console.log(users);
-                  console.log(parsed)
+                  var parsed2 = JSON.parse(users);
+                  //   console.log(users[0].name);
+                  // Object.entries(users).forEach(function ([key, value]) {
+                  //       console.log('key: ' + key + ' values: ' + value);
+                  // });
+                  console.log(users.substring(1, 41))
+                  console.log(parsed2[1].name)
             }
       }
       xhr.send();
 }
+
