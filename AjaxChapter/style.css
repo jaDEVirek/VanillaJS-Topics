@@ -1,0 +1,9 @@
+.inner-cl2 {
+  display: flex;
+  background: lightgray;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.inner-cl2 ul {
+  list-style: none;
+}

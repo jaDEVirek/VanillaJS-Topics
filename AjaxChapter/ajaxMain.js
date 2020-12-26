@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var e2 = document.getElementsByClassName('btn-warning')[0];
       el.addEventListener('click', loadText);
       e2.addEventListener('click', loadExternalApi);
-}
-)
+})
 
 function loadText() {
       xhr = new XMLHttpRequest();
@@ -25,7 +24,7 @@ function loadText() {
                               '<li> email:  ' + dataUsers[index].email + '</li>' +
                               '</ul>';
                   }
-                  document.querySelector("div.col-1").innerHTML = outPut;
+                  document.querySelector("div.inner-cl1").innerHTML = outPut;
             }
       }
       xhr.send();
@@ -39,18 +38,19 @@ function loadExternalApi() {
                   var resp = JSON.parse(this.responseText);
                   let outPut = '';
                   for (let index in resp) {
-                        outPut += "<ul>" +
+                        outPut += '<div>' +
+                              "<ul>" +
                               '<img src="' + resp[index].avatar_url + '" width="70" height="70">' +
-                              +'<ul>' +
+                              '<ul>' +
                               '<li> ID:  ' + resp[index].id + '</li>' +
                               '<li> Login:  ' + resp[index].login + '</li>' +
                               '</ul>' + '</div >';
+                        if (index == 10) break;
                   }
                   console.log("action");
                   document.querySelector("div.inner-cl2").innerHTML = outPut;
             }
       }
       xhr.send();
-
 }
 
