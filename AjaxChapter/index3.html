@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ajax Database PHP Example2</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+      <h1 class="header mx-auto d-block" style="width:450px">Php Database Example </h1>
+      <hr>
+      <div class="container">
+            <button type="button" class="btn db-buton btn-primary p-3 mb-5">Process DatabasePHP</button>
+            <div class="col result">
+                  <h2>Users</h2>
+                  <div class="col db  d-block mt-5" style="height: 250px;">
+                  </div>
+            </div>
+      </div>
+</body>
+<script>
+      document.querySelector('.container .db-buton').addEventListener('click', loadDataUser);
+      function loadDataUser() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'getUsers.php', true);
+            xhr.onload = function () {
+                  var users = JSON.parse(this.responseText);
+                  var outPut = '';
+                  for (var index in users) {
+                        outPut += "<ul>" +
+                              '<li> ID:  ' + resp[index].id + '</li>' +
+                              '<li> Name:  ' + resp[index].name + '</li>' +
+                              '</ul>';
+                  }
+                  document.querySelector('.col.d-block').innerHTML = outPut;
+            }
+            xhr.send();
+      }
+</script>
+
+</html>

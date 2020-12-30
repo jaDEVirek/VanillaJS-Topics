@@ -16,9 +16,9 @@ if(isset($_POST['name'])){
       echo 'POST: Your name is:  '. $_POST['name'];
       $query = "INSERT INTO users(name) VALUES ('$name')";
       if(mysqli_query($conn,$query)){
-            echo 'User Added,,,,';  
+            echo 'User Added,,,,';   
       }else{
-            echo '';
+            echo 'Error: ' + mysqli_error($conn) ;
       }
 }
 ?>
