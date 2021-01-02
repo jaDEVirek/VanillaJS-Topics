@@ -26,7 +26,8 @@ function getFoodData() {
 var formatedData = function () {
       getFoodData().then(function (rq) {
             var data = JSON.parse(rq);
-            var filtred = data.filter((food) => (food.hasOwnProperty('tags')));
+            // var filtred = data.filter((food) => (Object.values(food).find(food['tags'].includes('carb')) == true));
+            var filtred = Object.values(data).find(val => val['tags'].includes('carb'));
             console.log(filtred);
       });
 }
