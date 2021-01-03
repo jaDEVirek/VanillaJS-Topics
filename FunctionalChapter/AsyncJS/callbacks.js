@@ -38,5 +38,5 @@ function addMembership(pmGame, callback) {
 getMembershipInfo();
 // to show result we need add just callback function 
 addMembership({
-      gameName: "Age of Empire", price: "25euro", duration: "50euro", permanent: false
+      gameName: "Age of Empire", price: "25euro", duration: "50days", permanent: false
 }, getMembershipInfo);
