@@ -30,14 +30,3 @@ function person() {
       console.log(this);
 }
 person();
-
-const filter(f, array){
-      for (let i = 0; i < array.length; i++) {
-            if (f(array[i])) {
-                  filtered.push(array[i]);
-            }
-      }
-}
-
-const array = [1, 2, 3];
-const filtered = (a => !!a, array);
